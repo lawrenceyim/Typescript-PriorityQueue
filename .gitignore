@@ -1,0 +1,9 @@
+.DS_STORE
+.vscode/
+.history/
+.vs/
+*.log
+*.tmp
+node_modules/
+dist/
+build/

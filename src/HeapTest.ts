@@ -28,9 +28,8 @@ import { AreEqual, IsTrue, IsFalse } from "./TestUtils";
     for (let value of testValues) {
         heap.Enqueue(value);
     }
+    
     const sortedValues: number[] = testValues.sort((a, b) => a - b)
-    console.log(sortedValues);
-    heap.PrintHeap();
     for (let value of sortedValues) {
         AreEqual(heap.Poll(), value);
     }

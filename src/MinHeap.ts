@@ -1,9 +1,7 @@
 export class MinHeap {
     private _heap: number[] = [];
 
-    constructor() {
-
-    }
+    constructor() {}
 
     public Enqueue(value: number): void {
         this._heap.push(value);
@@ -15,14 +13,14 @@ export class MinHeap {
     }
 
     public Poll(): number | null {
-        if (this._heap.length == 0) {
+        if (this._heap.length === 0) {
             return null;
         }
-        
-        if (this._heap.length == 1) {
+
+        if (this._heap.length === 1) {
             return this._heap.shift() as number;
         }
-        
+
         const min = this._heap[0];
         this._heap[0] = this._heap.pop() as number;
         this.HeapifyDown();
@@ -30,14 +28,14 @@ export class MinHeap {
     }
 
     public Peek(): number | null {
-        if (this._heap.length == 0) {
+        if (this._heap.length === 0) {
             return null;
         }
         return this._heap[0];
     }
 
     private GetParentIndex(i: number): number {
-        return Math.floor((i - 2) / 2);
+        return Math.floor((i - 1) / 2);
     }
 
     private GetLeftIndex(i: number): number {
@@ -55,7 +53,7 @@ export class MinHeap {
             this._heap[this.GetParentIndex(index)] > this._heap[index]
         ) {
             [this._heap[this.GetParentIndex(index)], this._heap[index]] =
-            [this._heap[index], this._heap[this.GetParentIndex(index)]];
+                [this._heap[index], this._heap[this.GetParentIndex(index)]];
             index = this.GetParentIndex(index);
         }
     }
@@ -69,15 +67,16 @@ export class MinHeap {
                 this.GetRightIndex(index) < this._heap.length &&
                 this._heap[this.GetRightIndex(index)] < this._heap[smallerIndex]
             ) {
-                smallerIndex = this.GetRightIndex(index); 
+                smallerIndex = this.GetRightIndex(index);
             }
 
-            if (this._heap[index] < this._heap[smallerIndex]) {
+            if (this._heap[index] <= this._heap[smallerIndex]) {
                 break;
             }
 
             [this._heap[index], this._heap[smallerIndex]] = 
-            [this._heap[smallerIndex], this._heap[index]]
+                [this._heap[smallerIndex], this._heap[index]];
+            index = smallerIndex;
         }
     }
 }

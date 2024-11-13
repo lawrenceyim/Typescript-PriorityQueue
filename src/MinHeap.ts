@@ -3,6 +3,10 @@ export class MinHeap {
 
     constructor() {}
 
+    public Count(): number {
+        return this._heap.length;
+    }
+
     public Enqueue(value: number): void {
         this._heap.push(value);
         this.HeapifyUp();
